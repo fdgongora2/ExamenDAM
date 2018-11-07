@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="AppListViewExample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:data="using:AppListViewExample.Modelo" 
+    xmlns:local="using:AppListViewExample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <GridView x:Name="listaLibros" ItemsSource="{x:Bind librosMostrar}" Grid.Row="1" IsItemClickEnabled="True" ItemClick="ListaLibros_ItemClick">
+
+            <GridView.ItemTemplate >
+                <DataTemplate x:Name="FormatoPrueba" x:DataType="data:Libro" >
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+
+                        <Image Source="{x:Bind CoverImage}" Width="150"></Image>
+                        <StackPanel Margin="20,20,0,0">
+                            <TextBlock Text="{x:Bind Title}" HorizontalAlignment="Left" FontSize="16" />
+                            <TextBlock Text="{x:Bind Author}" HorizontalAlignment="Left" FontSize="10" />
+                        </StackPanel>
+                    </StackPanel>              
+                    
+                </DataTemplate>
+            </GridView.ItemTemplate> 
+        </GridView>
+
+    </Grid>
+</Page>
